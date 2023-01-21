@@ -1,21 +1,21 @@
 import { useState, useEffect } from 'react'
-import Blog from './components/Blog'
-import blogService from './services/blogs'
+import Show from './components/Show'
+import showService from './services/shows'
 
 const App = () => {
-  const [blogs, setBlogs] = useState([])
+  const [shows, setShows] = useState([])
 
   useEffect(() => {
-    blogService.getAll().then(blogs =>
-      setBlogs( blogs )
-    )  
+    showService.getAll().then(shows =>
+      setShows( shows )
+    )
   }, [])
 
   return (
     <div>
-      <h2>blogs</h2>
-      {blogs.map(blog =>
-        <Blog key={blog.id} blog={blog} />
+      <h2>What to watch</h2>
+      {shows.map(show =>
+        <Show key={show.id} show={show} />
       )}
     </div>
   )
